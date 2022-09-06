@@ -5,8 +5,13 @@
   margin: auto;
 }
 
+.display {
+  max-width: 60%;
+  margin: auto;
+}
+
 li {
-  text-align: left;
+  text-align: center;
   list-style-type: none;
   border: 2px solid black;
   border-radius: 10px;
