@@ -2,34 +2,55 @@ import React, { useState } from "react";
 import "./styles.css";
 
 const destinationDB = {
-  Europe: [
+  North: [
     {
-      name: "Colloseum",
-      location: "Rome, Italy"
-    },
-    {
-      name: "Cappadocia",
-      location: "Greece"
-    }
-  ],
-  India: [
-    {
-      name: "River Umngot",
-      location: "Dawki, Meghalaya"
+      name: "Pangong Tso, Ladakh",
+      description: "salt water lake, northmost region",
+      rate: "10/10"
     },
     {
       name: "Pangarchula Trek",
-      location: "Leh"
-    }
-  ],
-  USA: [
-    {
-      name: "Yosemite National Park",
-      location: "California"
+      description: "Leh",
+      rate: "8/10"
     },
     {
-      name: "O'ahu Koko Crater",
-      location: "Hawaii"
+      name: "Royal Enfield Ride, Numbra Valley, Leh",
+      description: "adventure, peace, scenery",
+      rate: "7/10"
+    }
+  ],
+  East: [
+    {
+      name: "Dzuko Valley, Nagaland",
+      description: "night trek",
+      rate: "10/10"
+    },
+    {
+      name: "River Umngot, Dawki, Meghalaya",
+      description: "diamond clear waters",
+      rate: "9/10"
+    },
+    {
+      name: "Rainbow Falls, Nongriat",
+      description: "downhill trek",
+      rate: "9/10"
+    }
+  ],
+  West: [
+    {
+      name: "Rann of Kutch, Gujarat",
+      description: "salt desert",
+      rate: "9/10"
+    },
+    {
+      name: "Jal Mahal, Jaipur, Rajasthan",
+      description: "beauty, architecture",
+      rate: "7/10"
+    },
+    {
+      name: "Desert Safari, Thar Desert",
+      description: "natural adventure",
+      rate: "6/10"
     }
   ]
 };
@@ -37,7 +58,7 @@ const destinationDB = {
 const destinationDBList = Object.keys(destinationDB);
 
 export default function App() {
-  var [destination, setDestination] = useState("India");
+  var [destination, setDestination] = useState("East");
 
   function display(item) {
     destination = item;
@@ -48,33 +69,23 @@ export default function App() {
     <div className="App">
       <h1>🧳</h1>
       <code style={{ fontSize: "30px" }}>you-only-live-once</code>
-      <p>check out my travel bucket list from across the world</p>
+      <p>check out my only-INDIA travel bucket list</p>
       <p>choose destination based on region</p>
 
       <p>
         {destinationDBList.map((item) => {
-          return (
-            <button
-              onClick={() => display(item)}
-              style={{
-                padding: "5px 10px",
-                borderRadius: "10px",
-                margin: "10px"
-              }}
-            >
-              {item}
-            </button>
-          );
+          return <button onClick={() => display(item)}>{item}</button>;
         })}
       </p>
 
       <hr />
 
-      <div>
+      <div className="display">
         {destinationDB[destination].map((place) => (
           <li>
-            <div style={{fontSize:"large"}}> {place.name} </div>
-            <div> {place.location} </div>
+            <div style={{ fontSize: "large" }}> 📍 {place.name} </div>
+            <div> 📝 {place.description} </div>
+            <div style={{ fontSize: "large" }}> 💯 {place.rate} </div>
           </li>
         ))}
       </div>
